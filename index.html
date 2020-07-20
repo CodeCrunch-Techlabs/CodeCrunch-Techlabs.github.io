@@ -77,8 +77,7 @@
         var speed = 100;
 
         function typeWriter() {
-            speechSynthesis.speak(new SpeechSynthesisUtterance("Welcome, I' am  Agent one 6 7 3 5.I'm here to recruit you for a top secret mission.Your mission,should you choose to accept it.To help us bring something amazing to Kane Pennsylvania."));
-            speechSynthesis.speak(new SpeechSynthesisUtterance("You will help develop an establishment like no other.The rest of your mission is top secret! For further instruction, click request your access code below. GO NOW, and good luck!"));
+            responsiveVoice.speak("hello world");
             if (i < txt.length) {
                 document.getElementById("terminal-text").innerHTML += txt.charAt(i);
                 i++;
@@ -90,7 +89,7 @@
 
     </script>
 
-    <!-- <script src="https://code.responsivevoice.org/responsivevoice.js?key=c0dGAJtq"></script> -->
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=c0dGAJtq"></script>
 
 </body>
 
