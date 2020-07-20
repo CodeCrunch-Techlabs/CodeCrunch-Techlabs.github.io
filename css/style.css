@@ -36,9 +36,12 @@ a:not([href]):hover{
 }
 
 .terminal-screen{
-    height: 100vh;
+    height: 80vh;
 }
 
-
-
-  
+.modal-content{
+  height: 60vh;
+    background: green;
+    color: black;
+    padding: 5px;
+}
