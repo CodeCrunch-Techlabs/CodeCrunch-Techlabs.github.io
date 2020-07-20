@@ -75,15 +75,16 @@
         var i = 0;
         var txt = "Welcome, I' am  Agent one 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania .  You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code below. GO NOW, and good luck!";
         var speed = 100;
-
-        function typeWriter() {
-            responsiveVoice.speak("hello world");
+        async function write_text(){
             if (i < txt.length) {
                 document.getElementById("terminal-text").innerHTML += txt.charAt(i);
                 i++;
-                setTimeout(typeWriter, speed);
+                setTimeout(write_text, speed);
             }
-
+        }
+        function typeWriter() {
+            write_text();
+            responsiveVoice.speak(txt);
         }
 
 
