@@ -73,9 +73,11 @@
     <script>
 
         var i = 0;
-        var txt = "Welcome, I' am  Agent one 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania .  You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code below. GO NOW, and good luck!";
-        var speed = 100;
+        var txt = "Welcome, I am  Agent one 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania. You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code below. GO NOW, and good luck!";
+        var txt2 = "Welcome, I am  Agent one 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania. You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code below. GO NOW, and good luck!";
+        var speed = 77;
         async function write_text(){
+            setTimeout(function(){ console.log("Hello"); }, 97);
             if (i < txt.length) {
                 document.getElementById("terminal-text").innerHTML += txt.charAt(i);
                 i++;
@@ -84,7 +86,7 @@
         }
         function typeWriter() {
             write_text();
-            responsiveVoice.speak(txt);
+            responsiveVoice.speak(txt2);
         }
 
 
