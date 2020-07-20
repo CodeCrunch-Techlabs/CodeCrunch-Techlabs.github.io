@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+  }
+
 body{
   overflow-x: hidden;
   font-family: "Lucida Console", Monaco, monospace;
@@ -14,57 +18,27 @@ body{
 
 /* Terminal-section */
 
-.terminal-screen{
+.terminal-section{
     background-color: black;
-    height: 100vh;
-    color: green;
     padding: 20px;
+    color: green;
   }
 
+  a.btn-tellmesecret{
+    background-color: red;
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+}
 
-  .css-typing p {
-    font-family: "Courier";
-    font-size: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  
-  .css-typing p:nth-child(2) {
-    width: 11.5em;
-    opacity: 0;
-    -webkit-animation: type2 2s steps(40, end);
-    animation: type2 2s steps(40, end);
-    -webkit-animation-delay: 2s;
-    animation-delay: 2s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-  }
-  
-  
-  @keyframes type2 {
-    0% {
-      width: 0;
-    }
-    1% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 1;
-      border: none;
-    }
-  }
-  
-  @-webkit-keyframes type2 {
-    0% {
-      width: 0;
-    }
-    1% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 1;
-      border: none;
-    }
-  }
-  
+a:not([href]):hover{
+    color: white;
+}
+
+.terminal-screen{
+    height: 100vh;
+}
+
+
+
   

@@ -26,6 +26,9 @@
                 <img src="assets/Gif/secret3.gif" class="gif" />
             </div>
         </div>
+        <div class="btn-tellme mt-5 mb-5 text-center text-uppercase">
+            <a class="btn-tellmesecret" onclick="typeWriter()" href="#terminal" id="btn-secret">Tell Me Secret</a>
+        </div>
         <div class="row">
             <div class="col-lg-4">
                 <img src="assets/Gif/comingsoon.gif" class="gif" />
@@ -40,23 +43,15 @@
     </div>
 
 
-    <div class="terminal-section mt-5">
+    <div class="terminal-section mt-5" id="terminal">
         <div class="text-center">
             <h2 class="section-heading text-uppercase font-weight-bold">Mission Details</h2>
         </div>
-        <div class="css-typing">
-            <p>
-              Typed text 1
-            </p>
-            <p>
-              Typed text 2 Longer
-            </p>
-            <p>
-              Typed text 3
-            </p>
-          </div>
+        <div class="container mt-5 terminal-screen">
+            <p id="terminal-text"></p>
+        </div>
         <div class="container text-center mt-5">
-            <button onclick="typeWriter()">Access Code</button>
+            <button>Access Code</button>
         </div>
     </div>
 
@@ -73,6 +68,29 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+
+
+    <script>
+
+        var i = 0;
+        var txt = "Welcome, I' am  Agent one 6735. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania .  You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code below. GO NOW, and good luck!";
+        var speed = 100;
+
+        function typeWriter() {
+            speechSynthesis.speak(new SpeechSynthesisUtterance("Hello, this is your browser speaking."));
+            if (i < txt.length) {
+
+                document.getElementById("terminal-text").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+
+        }
+
+       
+    </script>
+
+    <!-- <script src="https://code.responsivevoice.org/responsivevoice.js?key=c0dGAJtq"></script> -->
 
 </body>
 
