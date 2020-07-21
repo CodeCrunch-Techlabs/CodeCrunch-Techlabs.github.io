@@ -14,64 +14,18 @@
 </head>
 
 <body>
-    <div class="Home-section">
-        <div class="row">
-            <div class="col-lg-4">
-                <img src="assets/Gif/secret1.gif" class="gif" />
-            </div>
-            <div class="col-lg-4">
-                <img src="assets/Gif/secret2.gif" class="gif" />
-            </div>
-            <div class="col-lg-4">
-                <img src="assets/Gif/secret3.gif" class="gif" />
-            </div>
-        </div>
-        <div class="btn-tellme mt-5 mb-5 text-center text-uppercase">
-            <a class="btn-tellmesecret" onclick="typeWriter()" href="#terminal" id="btn-secret">Tell Me Secret</a>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <img src="assets/Gif/comingsoon.gif" class="gif" />
-            </div>
-            <div class="col-lg-4">
-                <img src="assets/Images/Comingtokane.jpeg" class="gif" />
-            </div>
-            <div class="col-lg-4">
-                <img src="assets/Gif/secret4.gif" class="gif" />
-            </div>
-        </div>
+
+
+    <div class="Home-section mt-5 mb-5 ml-auto mr-auto">
+        <img class="project-img" src="./assets/Images/fronttopsecret.jpg">
     </div>
 
-
-    <div class="terminal-section mt-5" id="terminal">
-        <div class="text-center">
-            <h2 class="section-heading text-uppercase font-weight-bold">Mission Details</h2>
-        </div>
-        <div class="container mt-5 terminal-screen">
-            <p id="terminal-text"></p>
-        </div>
+    <div class="terminal-screen mt-5 mb-5 ml-auto mr-auto">
+        <p id="terminal-text"></p>
+        <div class="secret-btn"> <a class="text-center text-uppercase tellsecretbtn" id="btnaccess"
+                onclick="typeWriter() ">Please Tell Me Secret</a></div>
+        <a id="fblink"></a>
     </div>
-
-    <div class="Access-code mt-5 mb-5">
-        <div class="container text-center mt-5">
-            <a class="btn-tellmesecret" href="#terminal" id="btn-secret" data-toggle="modal" data-target="#myModal" onclick="Requestcode()">Request Access</a>
-        </div>
-    </div>
-
-    <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-               <p id="Access-code"></p>
-               <a href="https://www.facebook.com/Maddog159" id="fb-link" style="display: none;">https://www.facebook.com/Maddog159</a>
-            </div>
-
-        </div>
-    </div>
-
 
 
 
@@ -90,6 +44,8 @@
 
     <script>
 
+   //Welcome Message
+
         var i = 0;
         var txt = "Welcome, I am  Agent 1 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania. You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code below. GO NOW, and good luck!";
         var txt2 = "Welcome, I am  Agent 1 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania. You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code below. GO NOW, and good luck!";
@@ -102,37 +58,43 @@
                 setTimeout(write_text, speed);
             }
         }
+
         function typeWriter() {
-            write_text();
-            responsiveVoice.speak(txt2);
+            if (document.getElementById("btnaccess").innerHTML == "Access Code") {
+                document.getElementById("terminal-text").innerHTML = "";
+                Requestcode();
+            }//Button text is Access Code then it will call Requestcode(Access Code Message) function.
+            else {
+                write_text();
+                responsiveVoice.speak(txt2);
+                document.getElementById("btnaccess").innerHTML = "Access Code"
+            }// Button text is Tell Me Secret then it will call write_text(Welcome Message) function
         }
-       
-        var code = Math.floor(Math.random()*(999-100)+100000);
-        var random = ''+ code
-      var ranstring = random.split('').join(' '); 
+
+    
+    //Access Code Message
+
+        var code = Math.floor(Math.random() * 90000) + 10000;
+        var random = '' + code
+        var ranstring = random.split('').join(' ');
         var j = 0;
         var reqcode = "Access Granted Your code is: " + ranstring + ", Please take note. You can reach your contact by searching FaceBook for MD one five nine.We have taken the liberty of finding them for you, if you click the link below you will be directed to their page. Your instructions now are to Like Their facebook page and message them your code. At that time you will receive further instructions. Don't worry, your participation will be rewarded!";
-        // var reqcode2 = "Access Granted Your code is: " + code + " Number, Please take note.";
         var speed = 77;
         async function Req_code() {
             setTimeout(function () { console.log("Hello"); }, 98);
             if (j < reqcode.length) {
-                document.getElementById("Access-code").innerHTML += reqcode.charAt(j);
+                document.getElementById("terminal-text").innerHTML += reqcode.charAt(j);
                 j++;
                 setTimeout(Req_code, speed);
             }
-            
+
         }
         function Requestcode() {
             Req_code();
             responsiveVoice.speak(reqcode);
+            document.getElementById("fblink").href = "https://www.facebook.com/Maddog159";
+            document.getElementById("fblink").innerHTML= "https://www.facebook.com/Maddog159";
         }
-
-
-        document.getElementById("fb-link").style.display = "block";
-
-     
-    
 
     </script>
 
