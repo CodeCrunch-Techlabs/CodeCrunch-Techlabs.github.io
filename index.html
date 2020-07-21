@@ -60,14 +60,14 @@
         }
 
         function typeWriter() {
-            if (document.getElementById("btnaccess").innerHTML == "Access Code") {
+            if (document.getElementById("btnaccess").innerHTML == "Request Access Code") {
                 document.getElementById("terminal-text").innerHTML = "";
                 Requestcode();
             }//Button text is Access Code then it will call Requestcode(Access Code Message) function.
             else {
                 write_text();
                 responsiveVoice.speak(txt2);
-                document.getElementById("btnaccess").innerHTML = "Access Code"
+                document.getElementById("btnaccess").innerHTML = "Request Access Code"
             }// Button text is Tell Me Secret then it will call write_text(Welcome Message) function
         }
 
