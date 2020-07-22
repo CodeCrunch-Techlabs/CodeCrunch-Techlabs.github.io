@@ -29,10 +29,9 @@ padding: 10px;
 }
 
 .secret-btn{
-  position: absolute;
-  bottom: 20%;
-  left: 33%;
   animation: blinker 1s linear infinite;
+  justify-content: center;
+  display: flex;
 }
 
 
@@ -51,7 +50,7 @@ a.text-center.text-uppercase.tellsecretbtn {
   
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .Home-section{
     max-width: 100%;
   }
