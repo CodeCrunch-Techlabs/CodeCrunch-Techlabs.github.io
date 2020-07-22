@@ -24,12 +24,12 @@
     </div>
 
     <div class="secret-btn mt-5 mb-5"> <a class="text-center text-uppercase tellsecretbtn" id="btnaccess"
-        onclick="typeWriter() ">Confidential Message</a></div>
+            onclick="typeWriter() ">Confidential Message</a></div>
 
 
-    <div class="terminal-screen mt-5 mb-5 ml-auto mr-auto">
-        <p id="terminal-text"></p>
-        <a id="fblink"></a>
+    <div class="terminal-screen mt-5 mb-5 ml-auto mr-auto" lang="en">
+        <p id="terminal-text" lang="en"></p>
+        <a id="fblink" lang="en"></a>
     </div>
 
 
@@ -49,11 +49,11 @@
 
     <script>
 
-   //Welcome Message
+        //Welcome Message
 
         var i = 0;
-        var txt = "Welcome, I am  Agent 1 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania. You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code below. GO NOW, and good luck!";
-        var txt2 = "Welcome, I am  Agent 1 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania. You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code below. GO NOW, and good luck!";
+        var txt = "Welcome, I am  Agent 1 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania. You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code above. GO NOW, and good luck!";
+        var txt2 = "Welcome, I am  Agent 1 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania. You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code above. GO NOW, and good luck!";
         var speed = 77;
         async function write_text() {
             setTimeout(function () { console.log("Hello"); }, 96);
@@ -76,8 +76,8 @@
             }// Button text is Tell Me Secret then it will call write_text(Welcome Message) function
         }
 
-    
-    //Access Code Message
+
+        //Access Code Message
 
         var code = Math.floor(Math.random() * 90000) + 10000;
         var random = '' + code
@@ -98,7 +98,7 @@
             Req_code();
             responsiveVoice.speak(reqcode);
             document.getElementById("fblink").href = "https://www.facebook.com/Maddog159";
-            document.getElementById("fblink").innerHTML= "https://www.facebook.com/Maddog159";
+            document.getElementById("fblink").innerHTML = "https://www.facebook.com/Maddog159";
         }
 
     </script>
