@@ -23,13 +23,33 @@
         <img src="./assets/Images/fronttopsecret.jpg" class="img-fluid" alt="Responsive image">
     </div>
 
-    <div class="secret-btn mt-5 mb-5"> <a class="text-center text-uppercase tellsecretbtn" id="btnaccess"
+    <div class="secret-btn-blink mt-5 mb-5" id="btnBlink"> <a class="text-center text-uppercase tellsecretbtn"
             onclick="typeWriter() ">Confidential Message</a></div>
+
+
+    <div class="secret-btn mt-5 mb-5" id="btnSimple"> <a class="text-center text-uppercase tellsecretbtn"
+            onclick="typeWriter()">Confidential Message</a></div>
 
 
     <div class="terminal-screen mt-5 mb-5 ml-auto mr-auto" lang="en">
         <p id="terminal-text" lang="en"></p>
         <a id="fblink" lang="en"></a>
+    </div>
+
+
+    <div class="access-btn-blink mt-5 mb-5" id="Accessbtnblink"> <a class="text-center text-uppercase tellsecretbtn"
+            onclick="Requestcode()">Request Access Code</a></div>
+
+    <div class="access-btn mt-5 mb-5" id="Accessbtn"> <a class="text-center text-uppercase tellsecretbtn"
+            onclick="Requestcode()">Request Access Code</a></div>
+
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat" attribution=setup_tool page_id="104430571349191"
+        logged_in_greeting="Message MD159 your security code!" logged_out_greeting="Message MD159 your security code!">
     </div>
 
 
@@ -51,29 +71,42 @@
 
         //Welcome Message
 
+        var blinkbtn = document.getElementById("btnBlink");
+        var simplebtn = document.getElementById("btnSimple");
+        var codebtnblink = document.getElementById("Accessbtnblink");
+        var codebtn = document.getElementById("Accessbtn");
+
+
+
         var i = 0;
-        var txt = "Welcome, I am  Agent 1 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania. You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code above. GO NOW, and good luck!";
-        var txt2 = "Welcome, I am  Agent 1 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania. You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code above. GO NOW, and good luck!";
+        var txt = "Welcome, I am  Agent 1 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania. You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code below. GO NOW, and good luck!";
+        var txt2 = "Welcome, I am  Agent 1 6 7 3 5. I'm here to recruit you for a top secret mission.Your mission, should you choose to accept it.To help us bring something amazing to Kane Pennsylvania. You will help develop an establishment like no other. The rest of your mission is top secret! For further instruction, click request your access code below. GO NOW, and good luck!";
         var speed = 77;
         async function write_text() {
-            setTimeout(function () { console.log("Hello"); }, 96);
+            setTimeout(function () { }, 96);
             if (i < txt.length) {
                 document.getElementById("terminal-text").innerHTML += txt.charAt(i);
                 i++;
+                if (i == txt.length) {
+                    codebtnblink.style.display = "flex";
+
+                }
                 setTimeout(write_text, speed);
             }
+            return ""
         }
 
         function typeWriter() {
-            if (document.getElementById("btnaccess").innerHTML == "Request Access Code") {
-                document.getElementById("terminal-text").innerHTML = "";
-                Requestcode();
-            }//Button text is Access Code then it will call Requestcode(Access Code Message) function.
-            else {
-                write_text();
-                responsiveVoice.speak(txt2);
-                document.getElementById("btnaccess").innerHTML = "Request Access Code"
-            }// Button text is Tell Me Secret then it will call write_text(Welcome Message) function
+            i = 0;
+            speed = 77;
+            codebtnblink.style.display = "none";
+            document.getElementById("terminal-text").innerHTML = "";
+            write_text();
+            responsiveVoice.speak(txt2);
+            blinkbtn.style.display = "none";
+            simplebtn.style.display = "flex";
+            document.getElementById("fblink").innerHTML = "";
+            // codebtn.style.display = "flex";
         }
 
 
@@ -95,13 +128,43 @@
 
         }
         function Requestcode() {
+            j = 0;
+            speed = 77;
+            document.getElementById("terminal-text").innerHTML = "";
             Req_code();
             responsiveVoice.speak(reqcode);
             document.getElementById("fblink").href = "https://www.facebook.com/Maddog159";
             document.getElementById("fblink").innerHTML = "https://www.facebook.com/Maddog159";
+            codebtnblink.style.display = "none";
+            codebtn.style.display = "flex";
         }
 
+        $(document).ready(function () { // when the document has completed loading
+            $(document).mouseup(function (e) { // attach the mouseup event for all div and pre tags
+                setTimeout(function () { // When clicking on a highlighted area, the value stays highlighted until after the mouseup event, and would therefore stil be captured by getSelection. This micro-timeout solves the issue. 
+                    responsiveVoice.cancel(); // stop anything currently being spoken
+                    responsiveVoice.speak(""); //speak the text as returned by getSelectionText
+                }, 1);
+            });
+        });
+
+
     </script>
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v7.0'
+            });
+        };
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=c0dGAJtq"></script>
 
