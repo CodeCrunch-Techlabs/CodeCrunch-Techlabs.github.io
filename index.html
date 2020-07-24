@@ -75,6 +75,7 @@
         var simplebtn = document.getElementById("btnSimple");
         var codebtnblink = document.getElementById("Accessbtnblink");
         var codebtn = document.getElementById("Accessbtn");
+        var stop = false;
 
 
 
@@ -84,16 +85,20 @@
         var speed = 77;
         async function write_text() {
             setTimeout(function () { }, 96);
-            if (i < txt.length) {
-                document.getElementById("terminal-text").innerHTML += txt.charAt(i);
-                i++;
-                setTimeout(write_text, speed);
-            }
-            return ""
+               if(stop == false){
+                if (i < txt.length) {
+                    console.log("test");
+                    document.getElementById("terminal-text").innerHTML += txt.charAt(i);
+                    i++;
+                    setTimeout(write_text, speed);
+                }
+               }
+            return;
         }
 
         function typeWriter() {
             i = 0;
+            stop = false;
             codebtnblink.style.display = "none";
             document.getElementById("terminal-text").innerHTML = "";
             write_text();
@@ -114,18 +119,21 @@
         var reqcode = "Access Granted Your code is: " + ranstring + ", Please take note. You can reach your contact by searching FaceBook for MD 1 5 9.We have taken the liberty of finding them for you, if you click the link below you will be directed to their page. Your instructions now are to Like Their facebook page and message them your code. At that time you will receive further instructions. Don't worry, your participation will be rewarded!";
         var speed = 77;
         async function Req_code() {
-            setTimeout(function () {  }, 98);
-            if (j < reqcode.length) {
-                document.getElementById("terminal-text").innerHTML += reqcode.charAt(j);
-                j++;
-                setTimeout(Req_code, speed);
-            }
-
+            setTimeout(function () { }, 98);
+               if(stop == true){
+                if (j < reqcode.length) {
+                    document.getElementById("terminal-text").innerHTML += reqcode.charAt(j);
+                    j++;
+                    setTimeout(Req_code, speed);
+                }
+               }
+            return;
         }
         function Requestcode() {
+            document.getElementById("terminal-text").innerHTML = "";
+            stop = true;
             j = 0;
             speed = 77;
-            document.getElementById("terminal-text").innerHTML = "";
             Req_code();
             responsiveVoice.speak(reqcode);
             document.getElementById("fblink").href = "https://www.facebook.com/Maddog159";
