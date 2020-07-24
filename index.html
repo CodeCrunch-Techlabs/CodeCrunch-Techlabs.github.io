@@ -19,6 +19,29 @@
 <body>
 
 
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v7.0'
+            });
+        };
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat" attribution=setup_tool page_id="104430571349191"
+        logged_in_greeting="Message MD159 your security code!" logged_out_greeting="Message MD159 your security code!"
+        theme_color="#5c9165">
+    </div>
+
+
     <div class="Home-section mt-5 mb-5 ml-auto mr-auto">
         <img src="./assets/Images/fronttopsecret.jpg" class="img-fluid" alt="Responsive image">
     </div>
@@ -41,16 +64,6 @@
     <div class="terminal-screen mt-5 mb-5 ml-auto mr-auto" lang="en">
         <p id="terminal-text" lang="en"></p>
         <a id="fblink" lang="en"></a>
-    </div>
-
-
-
-    <!-- Load Facebook SDK for JavaScript -->
-    <div id="fb-root"></div>
-
-    <!-- Your Chat Plugin code -->
-    <div class="fb-customerchat" attribution=setup_tool page_id="104430571349191"
-        logged_in_greeting="Message MD159 your security code!" logged_out_greeting="Message MD159 your security code!">
     </div>
 
 
@@ -147,6 +160,7 @@
     </script>
 
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=c0dGAJtq"></script>
+
 
 </body>
 
