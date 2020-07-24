@@ -31,17 +31,18 @@
             onclick="typeWriter()">Confidential Message</a></div>
 
 
-    <div class="terminal-screen mt-5 mb-5 ml-auto mr-auto" lang="en">
-        <p id="terminal-text" lang="en"></p>
-        <a id="fblink" lang="en"></a>
-    </div>
-
-
     <div class="access-btn-blink mt-5 mb-5" id="Accessbtnblink"> <a class="text-center text-uppercase tellsecretbtn"
             onclick="Requestcode()">Request Access Code</a></div>
 
     <div class="access-btn mt-5 mb-5" id="Accessbtn"> <a class="text-center text-uppercase tellsecretbtn"
             onclick="Requestcode()">Request Access Code</a></div>
+
+
+    <div class="terminal-screen mt-5 mb-5 ml-auto mr-auto" lang="en">
+        <p id="terminal-text" lang="en"></p>
+        <a id="fblink" lang="en"></a>
+    </div>
+
 
 
     <!-- Load Facebook SDK for JavaScript -->
@@ -85,14 +86,14 @@
         var speed = 77;
         async function write_text() {
             setTimeout(function () { }, 96);
-               if(stop == false){
+            if (stop == false) {
                 if (i < txt.length) {
                     console.log("test");
                     document.getElementById("terminal-text").innerHTML += txt.charAt(i);
                     i++;
                     setTimeout(write_text, speed);
                 }
-               }
+            }
             return;
         }
 
@@ -120,13 +121,13 @@
         var speed = 77;
         async function Req_code() {
             setTimeout(function () { }, 98);
-               if(stop == true){
+            if (stop == true) {
                 if (j < reqcode.length) {
                     document.getElementById("terminal-text").innerHTML += reqcode.charAt(j);
                     j++;
                     setTimeout(Req_code, speed);
                 }
-               }
+            }
             return;
         }
         function Requestcode() {
