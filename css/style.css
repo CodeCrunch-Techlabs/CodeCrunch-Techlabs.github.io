@@ -77,6 +77,10 @@ i.fas.fa-star{
   color: #f7b927 !important;
 }
 
+i.far.fa-star:hover{
+  color: #f7b927 !important;
+}
+
 @media only screen and (max-width: 700px) {
   .Home-section{
     max-width: 100%;
