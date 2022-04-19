@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=1000">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -43,7 +45,6 @@
 
 
     <div class="Home-section mt-5 mb-5 ml-auto mr-auto pl-2 pr-2">
-        <p>Helllooooo</p>
         <p class="font-weight-bold">Welcome! We set up this page in order to bring attention to our new project at 159 N
             Fraley Street in Kane
             Pa. If you follow the instructions you will be the first to see what is coming and get exclusive offers once
@@ -77,6 +78,14 @@
     </div>
 
 
+    <h2 class="text-center mt-5 mb-5">How would you rate Mad Dog 159?</h2>
+    <div class="reviewStars text-center">
+        <span data-rating="1"><i class="far fa-star"></i></span>
+        <span data-rating="2"><i class="far fa-star"></i></span>
+        <span data-rating="3"><i class="far fa-star"></i></span>
+        <span data-rating="4"><i class="far fa-star"></i></span>
+        <span data-rating="5"><i class="far fa-star"></i></span>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -166,6 +175,47 @@
             codebtnblink.style.display = "none";
             codebtn.style.display = "flex";
         }
+
+        var stars;
+        document.addEventListener('DOMContentLoaded', () => {
+            stars = document.querySelectorAll(".reviewStars span");
+
+            stars.forEach(item => {
+                item.addEventListener('click', function () {
+                    var rating = this.getAttribute("data-rating");
+                    return SetRatingStar(rating, stars);
+                });
+            });
+        });
+
+
+
+        async function SetRatingStar(rating, stars) {
+            var len = stars.length;
+            console.log(rating);
+
+            for (var i = 0; i < len; i++) {
+                if (i < rating) {
+                    stars[i].innerHTML = '<i class="fas fa-star"></i>';
+                } else {
+                    stars[i].innerHTML = '<i class="far fa-star"></i>';
+                }
+            }
+
+            setTimeout(() => {
+                if (rating <= 4) {
+                    window.open(
+                        "https://www.facebook.com/Maddog159/reviews/?ref=page_internal", "_blank");
+                }
+
+                else {
+                    window.open(
+                        "https://www.google.com/search?q=Mad+Dog+159+Kane+google&sxsrf=APq-WBuZ1XLD3eeBVB6WXLRJSlt548pHSQ%3A1650345650687&ei=skZeYobWKc2KhwPRoJRw&ved=0ahUKEwiG94_SsJ_3AhVNxWEKHVEQBQ4Q4dUDCA4&uact=5&oq=Mad+Dog+159+Kane+google&gs_lcp=Cgdnd3Mtd2l6EAMyBQghEKABMgUIIRCgATIFCCEQoAEyBQghEKABMgUIIRCgAToHCCMQsAMQJzoHCAAQRxCwAzoKCAAQRxCwAxDJAzoFCAAQgAQ6BAghEBU6BwghEAoQoAFKBAhBGABKBAhGGABQnwFYpA1g5A5oAXABeACAAdgBiAGrCJIBBTAuNi4xmAEAoAEByAEIwAEB&sclient=gws-wiz", "_blank");
+                }
+            }, 1000)
+
+
+        };
 
     </script>
 
