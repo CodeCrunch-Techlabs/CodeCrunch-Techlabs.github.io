@@ -11,12 +11,12 @@
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css?v=1" />
 
 </head>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 
 <body>
 
@@ -87,6 +87,48 @@
         <span data-rating="5"><i class="far fa-star"></i></span>
     </div>
 
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Feedback</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="feedbackForm">
+                        <div class="mb-3">
+                            <label for="exampleInputName" class="form-label">Name</label>
+                            <input type="text" name="name" class="form-control" id="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" name="email" class="form-control" id="email"
+                                aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleFormControlFeedback" class="form-label">Message</label>
+                            <textarea class="form-control" name="message" id="message" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputContactNo" class="form-label">Contact No</label>
+                            <input type="number" name="contactNo" class="form-control" id="contactNo">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit
+
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -100,6 +142,14 @@
         crossorigin="anonymous"></script>
 
 
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init('qsKPdW5GbETFRcllN');
+        })();
+    </script>
     <script>
 
         //Welcome Message
@@ -204,8 +254,7 @@
 
             setTimeout(() => {
                 if (rating <= 4) {
-                    window.open(
-                        "https://www.facebook.com/Maddog159/reviews/?ref=page_internal", "_blank");
+                    $("#myModal").modal();
                 }
 
                 else {
@@ -217,9 +266,28 @@
 
         };
 
+
+
+        document.getElementById('feedbackForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            Email.send({
+                SecureToken: "3470660f-acff-43c2-a323-446b99652c91",
+                To: 'blockchainwebdir@gmail.com', // Replce here Mad dog admin email
+                From: 'mansijoshi17799@gmail.com',
+                Subject: `Feedback by ${formData.get("name")}`,
+                Body: `Name: ${formData.get("name")} <br> Email: ${formData.get("email")} <br> Feedback: ${formData.get("message")} <br> Contact No: ${formData.get("contactNo")}`
+            }).then(
+                message => alert("Feedback has been sent!")
+            );
+        });
+
     </script>
 
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=c0dGAJtq"></script>
+
+
 
 
 </body>
